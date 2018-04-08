@@ -1,0 +1,30 @@
+
+server:
+  port: 8080
+
+management:
+  port: 9001
+
+spring:
+  application:
+    name: MonitorAPI
+#  data:
+#    rest:
+#      base-path: /api
+
+#====mongodb====
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: iot
+
+#====custom application settings
+paizo:
+  bigdecimal:
+    # set the scale (number of digits to the right of the decimal point)
+    # and the rounding mode for BigDecimal related operations
+    # see java.math.RoundingMode constructor for correct values
+    scale: 2
+    roundingMode: FLOOR
+
