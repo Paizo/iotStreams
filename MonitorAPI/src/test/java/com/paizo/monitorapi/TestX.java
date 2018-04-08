@@ -9,6 +9,7 @@ import com.paizo.monitorapi.repository.CarFuelRepository;
 import com.paizo.monitorapi.repository.RefrigeratorRepository;
 import com.paizo.monitorapi.repository.SmartCouchRepository;
 import com.paizo.monitorapi.repository.SmartWatchRepository;
+import com.paizo.monitorapi.service.SmartCouchService;
 import com.paizo.monitorapi.service.UtilityService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -113,6 +114,14 @@ public class TestX {
         for (Refrigerator r: all) {
             log.error(r.toString());
         }
+    }
+
+    @Autowired
+    SmartCouchService smartCouchService;
+
+    @Test
+    public void asd() {
+        smartCouchService.averageTemperature();
     }
 
 }
