@@ -52,10 +52,10 @@ public class TestX {
     @Autowired
     private TestUtils testUtils;
 
-    @Before
-    public void setup() {
-        refrigeratorRepository.deleteAll();
-    }
+//    @Before
+//    public void setup() {
+//        refrigeratorRepository.deleteAll();
+//    }
 
 
     @Test

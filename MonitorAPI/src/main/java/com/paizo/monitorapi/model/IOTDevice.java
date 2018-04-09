@@ -9,8 +9,8 @@ import java.time.LocalDateTime;
 @ToString
 public class IOTDevice {
 
-    public String deviceId;
-    public String vendor;
-    public String macAddress;
-    protected LocalDateTime time;
+    private String deviceId;
+    private String vendor;
+    private String macAddress;
+    private LocalDateTime time;
 }

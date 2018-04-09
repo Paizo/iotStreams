@@ -5,6 +5,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 
-public interface SmartCouchRepository extends MongoRepository<SmartCouch, String>, QuerydslPredicateExecutor<SmartCouch> {
+public interface SmartCouchRepository extends MongoRepository<SmartCouch, String> {
 
 }
