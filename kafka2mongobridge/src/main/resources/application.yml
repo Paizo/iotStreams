@@ -1,0 +1,13 @@
+
+
+spring:
+  kafka:
+    consumer:
+      auto-offset-reset: earliest
+#      group-id: boot
+
+kafka:
+  topic:
+    smartCouch: smart-couch
+  groupId:
+    smartCouch: smart-couch

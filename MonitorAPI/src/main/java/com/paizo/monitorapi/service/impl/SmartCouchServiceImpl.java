@@ -1,20 +1,19 @@
 package com.paizo.monitorapi.service.impl;
 
-import com.paizo.monitorapi.model.SensorType;
 import com.paizo.monitorapi.model.SmartCouch;
 import com.paizo.monitorapi.repository.SmartCouchRepository;
 import com.paizo.monitorapi.service.SmartCouchService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.aggregation.*;
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
+import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
-import static org.springframework.data.mongodb.core.query.Criteria.where;
 
 @Service
 @Slf4j
@@ -48,12 +47,8 @@ public class SmartCouchServiceImpl implements SmartCouchService {
                 match(
                     new Criteria("deviceId")
                             .is("ABYbEVJ")
-                            .and("sensorsReadings.sensorType")
-                            .is(SensorType.TEMPERATURE.name())
                 ),
-                unwind("sensorsReadings"),
-                match(where("sensorsReadings.sensorType").is(SensorType.TEMPERATURE.name())),
-                group("sensorsReadings.TEMPERATURE").avg("sensorsReadings.value").as("val"),
+                group("deviceId").avg("temperature").as("val"),
                 project("val")
         );
 

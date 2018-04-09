@@ -1,9 +1,9 @@
-package com.paizo.monitorapi;
+package com.paizo.producer;
 
-import com.paizo.monitorapi.model.CarFuel;
-import com.paizo.monitorapi.model.Refrigerator;
-import com.paizo.monitorapi.model.SmartCouch;
-import com.paizo.monitorapi.model.SmartWatch;
+import com.paizo.producer.model.CarFuel;
+import com.paizo.producer.model.Refrigerator;
+import com.paizo.producer.model.SmartCouch;
+import com.paizo.producer.model.SmartWatch;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.springframework.stereotype.Component;
@@ -20,7 +20,7 @@ public class TestUtils {
                 .time(LocalDateTime.now())
                 .vendor(RandomStringUtils.randomAlphabetic(3,10))
                 .spoiledItems(RandomUtils.nextInt(0,10))
-                .temperature(RandomUtils.nextInt(-20, 100))
+                .temperature(RandomUtils.nextInt(0, 100))
                 .build();
         return refrigerator;
     }
@@ -34,7 +34,7 @@ public class TestUtils {
                 .bluetoothEnabled(RandomUtils.nextBoolean())
                 .bluetoothPaired(RandomUtils.nextBoolean())
                 .pressure(RandomUtils.nextInt(0,999))
-                .temperature(RandomUtils.nextInt(-20, 100))
+                .temperature(RandomUtils.nextInt(0, 100))
                 .build();
         return smartCouch;
     }

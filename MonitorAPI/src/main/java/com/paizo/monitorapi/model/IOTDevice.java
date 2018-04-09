@@ -11,6 +11,5 @@ public class IOTDevice {
 
     private String deviceId;
     private String vendor;
-    private String macAddress;
     private LocalDateTime time;
 }

@@ -7,7 +7,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Document(collection = "smartCouch")
 @Data
@@ -16,17 +15,18 @@ public class SmartCouch extends IOTDevice {
 
     @Id
     private String id;
-    private List<DecimalSensor> sensorsReadings;
     private Boolean bluetoothEnabled;
     private Boolean bluetoothPaired;
+    private Integer temperature;
+    private Integer pressure;
 
     @Builder
-    public SmartCouch(String deviceId, String vendor, String macAddress, LocalDateTime time, String id, List<DecimalSensor> sensorsReadings, Boolean bluetoothEnabled, Boolean bluetoothPaired) {
-        super(deviceId, vendor, macAddress, time);
+    public SmartCouch(String deviceId, String vendor, LocalDateTime time, String id, Boolean bluetoothEnabled, Boolean bluetoothPaired, Integer temperature, Integer pressure) {
+        super(deviceId, vendor, time);
         this.id = id;
-        this.sensorsReadings = sensorsReadings;
         this.bluetoothEnabled = bluetoothEnabled;
         this.bluetoothPaired = bluetoothPaired;
+        this.temperature = temperature;
+        this.pressure = pressure;
     }
-
 }

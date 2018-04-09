@@ -7,7 +7,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Document(collection = "refrigerator")
 @Data
@@ -16,11 +15,14 @@ public class Refrigerator extends IOTDevice {
 
     @Id
     private String id;
-    private List<DecimalSensor> sensorsReadings;
+    private Integer temperature;
+    private Integer spoiledItems;
 
     @Builder
-    public Refrigerator(String deviceId, String vendor, String macAddress, LocalDateTime time, List<DecimalSensor> sensorsReadings) {
-        super(deviceId, vendor, macAddress, time);
-        this.sensorsReadings = sensorsReadings;
+    public Refrigerator(String deviceId, String vendor, LocalDateTime time, String id, Integer temperature, Integer spoiledItems) {
+        super(deviceId, vendor, time);
+        this.id = id;
+        this.temperature = temperature;
+        this.spoiledItems = spoiledItems;
     }
 }
