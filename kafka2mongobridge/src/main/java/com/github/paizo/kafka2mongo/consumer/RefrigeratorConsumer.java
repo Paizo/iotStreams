@@ -1,8 +1,8 @@
 package com.github.paizo.kafka2mongo.consumer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.paizo.kafka2mongo.model.SmartCouch;
-import com.github.paizo.kafka2mongo.repository.SmartCouchRepository;
+import com.github.paizo.kafka2mongo.model.Refrigerator;
+import com.github.paizo.kafka2mongo.repository.RefrigeratorRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,18 +15,18 @@ import static java.lang.String.format;
 
 @Component
 @Slf4j
-public class SmartCouchConsumer {
+public class RefrigeratorConsumer {
 
     @Autowired
     private ObjectMapper objectMapper;
 
     @Autowired
-    private SmartCouchRepository smartCouchRepository;
+    private RefrigeratorRepository refrigeratorRepository;
 
-    @KafkaListener(groupId = "${kafka.topic.smartCouch.groupId}", topics = "${kafka.topic.smartCouch.raw-topic}")
+    @KafkaListener(groupId = "${kafka.topic.refrigerator.groupId}", topics = "${kafka.topic.refrigerator.raw-topic}")
     public void receive(ConsumerRecord<String, String> consumerRecord) throws IOException {
         log.trace(format("received payload=[%s]", consumerRecord.toString()));
-        SmartCouch smartCouch = objectMapper.readValue(consumerRecord.value(), SmartCouch.class);
-        smartCouchRepository.save(smartCouch);
+        Refrigerator refrigerator = objectMapper.readValue(consumerRecord.value(), Refrigerator.class);
+        refrigeratorRepository.save(refrigerator);
     }
 }

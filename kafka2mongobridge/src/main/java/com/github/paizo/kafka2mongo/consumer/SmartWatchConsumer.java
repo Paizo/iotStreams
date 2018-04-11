@@ -1,8 +1,8 @@
 package com.github.paizo.kafka2mongo.consumer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.paizo.kafka2mongo.model.SmartCouch;
-import com.github.paizo.kafka2mongo.repository.SmartCouchRepository;
+import com.github.paizo.kafka2mongo.model.SmartWatch;
+import com.github.paizo.kafka2mongo.repository.SmartWatchRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,18 +15,18 @@ import static java.lang.String.format;
 
 @Component
 @Slf4j
-public class SmartCouchConsumer {
+public class SmartWatchConsumer {
 
     @Autowired
     private ObjectMapper objectMapper;
 
     @Autowired
-    private SmartCouchRepository smartCouchRepository;
+    private SmartWatchRepository smartWatchRepository;
 
-    @KafkaListener(groupId = "${kafka.topic.smartCouch.groupId}", topics = "${kafka.topic.smartCouch.raw-topic}")
+    @KafkaListener(groupId = "${kafka.topic.smartWatch.groupId}", topics = "${kafka.topic.smartWatch.raw-topic}")
     public void receive(ConsumerRecord<String, String> consumerRecord) throws IOException {
         log.trace(format("received payload=[%s]", consumerRecord.toString()));
-        SmartCouch smartCouch = objectMapper.readValue(consumerRecord.value(), SmartCouch.class);
-        smartCouchRepository.save(smartCouch);
+        SmartWatch smartWatch = objectMapper.readValue(consumerRecord.value(), SmartWatch.class);
+        smartWatchRepository.save(smartWatch);
     }
 }

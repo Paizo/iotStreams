@@ -1,8 +1,8 @@
 package com.github.paizo.kafka2mongo.consumer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.paizo.kafka2mongo.model.SmartCouch;
-import com.github.paizo.kafka2mongo.repository.SmartCouchRepository;
+import com.github.paizo.kafka2mongo.model.CarFuel;
+import com.github.paizo.kafka2mongo.repository.CarFuelRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,18 +15,18 @@ import static java.lang.String.format;
 
 @Component
 @Slf4j
-public class SmartCouchConsumer {
+public class CarFuelConsumer {
 
     @Autowired
     private ObjectMapper objectMapper;
 
     @Autowired
-    private SmartCouchRepository smartCouchRepository;
+    private CarFuelRepository carFuelRepository;
 
-    @KafkaListener(groupId = "${kafka.topic.smartCouch.groupId}", topics = "${kafka.topic.smartCouch.raw-topic}")
+    @KafkaListener(groupId = "${kafka.topic.carFuel.groupId}", topics = "${kafka.topic.carFuel.raw-topic}")
     public void receive(ConsumerRecord<String, String> consumerRecord) throws IOException {
         log.trace(format("received payload=[%s]", consumerRecord.toString()));
-        SmartCouch smartCouch = objectMapper.readValue(consumerRecord.value(), SmartCouch.class);
-        smartCouchRepository.save(smartCouch);
+        CarFuel carFuel = objectMapper.readValue(consumerRecord.value(), CarFuel.class);
+        carFuelRepository.save(carFuel);
     }
 }

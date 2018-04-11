@@ -8,10 +8,7 @@
     </appender>
 
     <logger name="org.springframework" level="INFO"/>
-    <logger name="org.springframework.web.filter.CommonsRequestLoggingFilter" level="WARN"/>
-    <logger name="org.springframework.data.mongodb" level="DEBUG"/>
-    <!--<logger name="org.springframework.data.mongodb.core.MongoTemplate" level="DEBUG"/>-->
-    <logger name="com.github.paizo.monitorapi" level="trace"/>
+    <logger name="com.github.paizo.producer" level="trace"/>
 
     <root level="INFO">
         <appender-ref ref="console"/>

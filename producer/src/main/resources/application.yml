@@ -1,0 +1,19 @@
+
+management:
+  port: 9001
+
+spring:
+  application:
+    name: Producer
+
+paizo:
+  iot-messages-rate:
+    carFuel: 1000
+    smartCouch: 1000
+    smartWatch: 1000
+    refrigerator: 1000
+  topic:
+    smartCouch: smart-couch-raw
+    smartWatch: smart-watch-raw
+    carFuel: car-fuel-raw
+    refrigerator: refrigerator-raw
