@@ -9,6 +9,7 @@ import org.apache.commons.lang3.RandomUtils;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Component
 public class TestUtils {
@@ -17,7 +18,8 @@ public class TestUtils {
         Refrigerator refrigerator = Refrigerator
                 .builder()
                 .deviceId(deviceId == null ? RandomStringUtils.randomAlphabetic(3,10) : deviceId)
-                .time(LocalDateTime.now())
+                .time(new Date())
+//                .time(LocalDateTime.now())
                 .vendor(RandomStringUtils.randomAlphabetic(3,10))
                 .spoiledItems(RandomUtils.nextInt(0,10))
                 .temperature(RandomUtils.nextInt(-20, 100))

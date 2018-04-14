@@ -21,3 +21,7 @@ build/
 *.ipr
 *.iws
 *.idea
+
+#backup files
+
+*.bak

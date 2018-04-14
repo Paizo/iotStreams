@@ -4,8 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.mongodb.core.index.Indexed;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -13,9 +14,10 @@ import java.time.LocalDateTime;
 @Builder
 public class SmartWatch {
 
+    @Indexed
     private String deviceId;
     private String vendor;
-    private LocalDateTime time;
+    private Date time;
     private Integer heartBeat;
     private Boolean inUse;
 

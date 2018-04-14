@@ -3,7 +3,7 @@ package com.github.paizo.producer.model;
 import lombok.Builder;
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @Builder
@@ -11,7 +11,7 @@ public class Refrigerator {
 
     private String deviceId;
     private String vendor;
-    private LocalDateTime time;
+    private Date time;
     private Integer temperature;
     private Integer spoiledItems;
 
