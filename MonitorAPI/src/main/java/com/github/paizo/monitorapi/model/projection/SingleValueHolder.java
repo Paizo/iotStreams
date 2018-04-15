@@ -5,8 +5,8 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 @Data
-public class Median {
+public class SingleValueHolder {
 
-    private BigDecimal median;
+    private BigDecimal value;
 
 }

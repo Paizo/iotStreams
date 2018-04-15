@@ -8,6 +8,9 @@ import org.springframework.data.mongodb.core.index.Indexed;
 
 import java.util.Date;
 
+/**
+ * The default collection name that is used is the class name changed to start with a lower-case letter
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,7 +21,8 @@ public class Refrigerator {
     private String deviceId;
     private String vendor;
     private Date time;
-    private Integer temperature;
-    private Integer spoiledItems;
+    private String sensorId;
+    private String sensorType;
+    private Integer sensorValue;
 
 }

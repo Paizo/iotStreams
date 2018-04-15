@@ -12,7 +12,8 @@ public class Refrigerator {
     private String deviceId;
     private String vendor;
     private Date time;
-    private Integer temperature;
-    private Integer spoiledItems;
+    private String sensorId;
+    private String sensorType;
+    private Integer sensorValue;
 
 }

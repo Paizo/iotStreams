@@ -18,8 +18,8 @@ public class CarFuel {
     private String deviceId;
     private String vendor;
     private Date time;
-    private Boolean isEmpty;
-    private Integer capacity;
-    private Integer fuelLevel;
+    private String sensorId;
+    private String sensorType;
+    private Integer sensorValue;
 
 }

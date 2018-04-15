@@ -18,7 +18,8 @@ public class SmartWatch {
     private String deviceId;
     private String vendor;
     private Date time;
-    private Integer heartBeat;
-    private Boolean inUse;
+    private String sensorId;
+    private String sensorType;
+    private Integer sensorValue;
 
 }
