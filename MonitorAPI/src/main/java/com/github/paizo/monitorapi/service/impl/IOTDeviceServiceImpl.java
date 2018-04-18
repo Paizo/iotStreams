@@ -53,7 +53,7 @@ public class IOTDeviceServiceImpl<T> implements IOTDeviceService {
         this.genericType = genericType;
     }
 
-    //    @Override
+    @Override
     public SingleSensorReading averageSensorValueByDeviceIdSensorIdAndDateRange(String deviceId, String sensorId, Date from, Date to) {
         verifyParameters(deviceId, from, to, sensorId);
 
@@ -77,7 +77,7 @@ public class IOTDeviceServiceImpl<T> implements IOTDeviceService {
         return extractResult(mappedResults, deviceId, sensorId, ReadingType.AVERAGE);
     }
 
-//    @Override
+    @Override
     public SingleSensorReading minSensorValueByDeviceIdSensorIdAndDateRange(String deviceId, String sensorId, Date from, Date to) {
         verifyParameters(deviceId, from, to, sensorId);
 
@@ -101,7 +101,7 @@ public class IOTDeviceServiceImpl<T> implements IOTDeviceService {
         return extractResult(mappedResults, deviceId, sensorId, ReadingType.MIN);
     }
 
-//    @Override
+    @Override
     public SingleSensorReading maxSensorValueByDeviceIdSensorIdAndDateRange(String deviceId, String sensorId, Date from, Date to) {
         verifyParameters(deviceId, from, to, sensorId);
 
@@ -128,7 +128,7 @@ public class IOTDeviceServiceImpl<T> implements IOTDeviceService {
     /**
      * extracted from https://www.compose.com/articles/mongo-metrics-finding-a-happy-median/
      */
-//    @Override
+    @Override
     public SingleSensorReading medianSensorValueByDeviceIdSensorIdAndDateRange(String deviceId, String sensorId, Date from, Date to) {
         verifyParameters(deviceId, from, to, sensorId);
 
@@ -170,7 +170,7 @@ public class IOTDeviceServiceImpl<T> implements IOTDeviceService {
         return extractResult(mappedResults, deviceId, sensorId, ReadingType.MEDIAN);
     }
 
-//    @Override
+    @Override
     public List<SingleSensorReading> averageReadings4DeviceIdSensorIdsAndDateRange(String deviceId, Date from, Date to, String... sensorsId) {
         verifyParameters(deviceId, from, to, sensorsId);
 
@@ -182,7 +182,7 @@ public class IOTDeviceServiceImpl<T> implements IOTDeviceService {
         return results;
     }
 
-//    @Override
+    @Override
     public List<SingleSensorReading> maxReadings4DeviceIdSensorIdsAndDateRange(String deviceId, Date from, Date to, String... sensorsId) {
         verifyParameters(deviceId, from, to, sensorsId);
 
@@ -194,7 +194,7 @@ public class IOTDeviceServiceImpl<T> implements IOTDeviceService {
         return results;
     }
 
-//    @Override
+    @Override
     public List<SingleSensorReading> minReadings4DeviceIdSensorIdsAndDateRange(String deviceId, Date from, Date to, String... sensorsId) {
         verifyParameters(deviceId, from, to, sensorsId);
 
@@ -206,7 +206,7 @@ public class IOTDeviceServiceImpl<T> implements IOTDeviceService {
         return results;
     }
 
-//    @Override
+    @Override
     public List<SingleSensorReading> medianReadings4DeviceIdSensorIdsAndDateRange(String deviceId, Date from, Date to, String... sensorsId) {
         verifyParameters(deviceId, from, to, sensorsId);
 

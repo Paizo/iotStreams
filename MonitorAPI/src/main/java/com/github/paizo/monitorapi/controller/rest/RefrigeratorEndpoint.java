@@ -20,8 +20,6 @@ public class RefrigeratorEndpoint extends AbstractEndpoint {
     @Autowired
     public void setIotService(IOTDeviceServiceImpl<Refrigerator> service) {
         this.iotService = service;
-        //service.setGenericType(Refrigerator.class);
-
     }
 
 

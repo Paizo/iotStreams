@@ -14,7 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * Test class used during development only to generate sample data
+ * Test class used during development to generate sample data
  */
 @Ignore
 @Slf4j
