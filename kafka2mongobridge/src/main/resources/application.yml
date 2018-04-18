@@ -1,4 +1,3 @@
-
 management:
   port: 9002
 
@@ -33,3 +32,24 @@ kafka:
     refrigerator:
       raw-topic: refrigerator-raw
       groupId:  refrigerator-raw
+
+#============================================
+#======docker container
+#============================================
+
+spring:
+  profiles: container
+  application:
+    name: Kafka2MongoBridge
+
+#====mongodb====
+  data:
+    mongodb:
+      host: ${DATABASE_HOST}
+      port: ${DATABASE_PORT}
+      database: ${DATABASE_NAME}
+
+#====Kafka=====
+  kafka:
+    consumer:
+      auto-offset-reset: earliest

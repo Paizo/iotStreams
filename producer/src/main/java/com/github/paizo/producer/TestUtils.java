@@ -15,6 +15,7 @@ public class TestUtils {
                 .builder()
                 .deviceId(deviceId == null ? RandomStringUtils.randomAlphabetic(3,10) : deviceId)
                 .time(new Date())
+                .sensorId(SensorId.values()[RandomUtils.nextInt(0, SensorId.values().length)].name())
                 .vendor(RandomStringUtils.randomAlphabetic(3,10))
                 .sensorValue(RandomUtils.nextInt(0, 100))
                 .build();
