@@ -5,7 +5,7 @@ import com.github.paizo.monitorapi.model.Refrigerator;
 import com.github.paizo.monitorapi.model.rest.ReadingType;
 import com.github.paizo.monitorapi.model.rest.SingleSensorReading;
 import com.github.paizo.monitorapi.repository.RefrigeratorRepository;
-import com.github.paizo.monitorapi.service.impl.RefrigeratorServiceImpl;
+import com.github.paizo.monitorapi.service.impl.IOTDeviceServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.time.DateUtils;
@@ -29,14 +29,13 @@ import static org.junit.Assert.assertThat;
 @Slf4j
 @SpringBootTest(classes = MonitorAPIApplication.class)
 @RunWith(SpringRunner.class)
-public class RefrigeratorServiceTest {
+public class IOTDeviceServiceTest {
 
     @Autowired
     RefrigeratorRepository refrigeratorRepository;
 
     @Autowired
-//    RefrigeratorService refrigeratorService;
-    RefrigeratorServiceImpl refrigeratorService;
+    IOTDeviceServiceImpl<Refrigerator> iotDeviceService;
 
     private final Date date = new Date();
     private final String deviceId = "myId";
@@ -51,35 +50,35 @@ public class RefrigeratorServiceTest {
     @Test
     public void averageSensorValueByDeviceIdAndDateRangeShouldReturnCorrectAverage() {
         double expectedAvg = generateAndSaveDocumentsAndReturnTheirAvg(RandomUtils.nextInt(3,10));
-        SingleSensorReading singleSensorReading = refrigeratorService.averageSensorValueByDeviceIdSensorIdAndDateRange(deviceId, sensorId, date, DateUtils.addDays(date, 10));
+        SingleSensorReading singleSensorReading = iotDeviceService.averageSensorValueByDeviceIdSensorIdAndDateRange(deviceId, sensorId, date, DateUtils.addDays(date, 10));
         assertResult(singleSensorReading, expectedAvg, deviceId, sensorId, ReadingType.AVERAGE);
     }
 
     @Test
     public void minSensorValueByDeviceIdSensorIdAndDateRangeReturnCorrectMin() {
         double expectedMin = generateAndSaveDocumentsAndReturnTheirMinOrMax(RandomUtils.nextInt(3,10), false);
-        SingleSensorReading singleSensorReading = refrigeratorService.minSensorValueByDeviceIdSensorIdAndDateRange(deviceId, sensorId, date, DateUtils.addDays(date, 10));
+        SingleSensorReading singleSensorReading = iotDeviceService.minSensorValueByDeviceIdSensorIdAndDateRange(deviceId, sensorId, date, DateUtils.addDays(date, 10));
         assertResult(singleSensorReading, expectedMin, deviceId, sensorId, ReadingType.MIN);
     }
 
     @Test
     public void maxSensorValueByDeviceIdSensorIdAndDateRangeReturnCorrectMax() {
         double expectedMin = generateAndSaveDocumentsAndReturnTheirMinOrMax(RandomUtils.nextInt(3,10), true);
-        SingleSensorReading singleSensorReading = refrigeratorService.maxSensorValueByDeviceIdSensorIdAndDateRange(deviceId, sensorId, date, DateUtils.addDays(date, 10));
+        SingleSensorReading singleSensorReading = iotDeviceService.maxSensorValueByDeviceIdSensorIdAndDateRange(deviceId, sensorId, date, DateUtils.addDays(date, 10));
         assertResult(singleSensorReading, expectedMin, deviceId, sensorId, ReadingType.MAX);
     }
 
     @Test
     public void medianSensorValueByDeviceIdAndDateRangeShouldReturnCorrectMedianIfOddCount() {
         double expectedMedian = generateAndSaveDocumentsAndReturnTheMedian(true);
-        SingleSensorReading singleSensorReading = refrigeratorService.medianSensorValueByDeviceIdSensorIdAndDateRange(deviceId, sensorId, date, DateUtils.addDays(date, 10));
+        SingleSensorReading singleSensorReading = iotDeviceService.medianSensorValueByDeviceIdSensorIdAndDateRange(deviceId, sensorId, date, DateUtils.addDays(date, 10));
         assertResult(singleSensorReading, expectedMedian, deviceId, sensorId, ReadingType.MEDIAN);
     }
 
     @Test
     public void medianSensorValueByDeviceIdAndDateRangeShouldReturnCorrectMedianIfEvenCount() {
         double expectedMedian = generateAndSaveDocumentsAndReturnTheMedian(false);
-        SingleSensorReading singleSensorReading = refrigeratorService.medianSensorValueByDeviceIdSensorIdAndDateRange(deviceId, sensorId, date, DateUtils.addDays(date, 10));
+        SingleSensorReading singleSensorReading = iotDeviceService.medianSensorValueByDeviceIdSensorIdAndDateRange(deviceId, sensorId, date, DateUtils.addDays(date, 10));
         assertResult(singleSensorReading, expectedMedian, deviceId, sensorId, ReadingType.MEDIAN);
     }
 

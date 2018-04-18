@@ -15,6 +15,7 @@ import org.springframework.data.mongodb.core.aggregation.ArithmeticOperators.Cei
 import org.springframework.data.mongodb.core.aggregation.ArithmeticOperators.Floor;
 import org.springframework.data.mongodb.core.aggregation.ArrayOperators.ArrayElemAt;
 import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import javax.annotation.PostConstruct;
@@ -27,7 +28,8 @@ import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
 import static org.springframework.data.mongodb.core.aggregation.ArithmeticOperators.Ceil.ceilValueOf;
 import static org.springframework.data.mongodb.core.aggregation.ArithmeticOperators.Floor.floorValueOf;
 
-public class AbstractIOTDeviceService<T> implements IOTDeviceService {
+@Service
+public class IOTDeviceServiceImpl<T> implements IOTDeviceService {
 
     public static final String DEVICE_ID_FIELD = "deviceId";
     public static final String SENSOR_ID_FIELD = "sensorId";
@@ -42,10 +44,16 @@ public class AbstractIOTDeviceService<T> implements IOTDeviceService {
 
     @PostConstruct
     void determineClassType() {
-        this.genericType = (Class<T>) GenericTypeResolver.resolveTypeArgument(getClass(), AbstractIOTDeviceService.class);
+        if (genericType == null) {
+            this.genericType = (Class<T>) GenericTypeResolver.resolveTypeArgument(getClass(), IOTDeviceServiceImpl.class);
+        }
     }
 
-    @Override
+    public void setGenericType(Class<T> genericType) {
+        this.genericType = genericType;
+    }
+
+    //    @Override
     public SingleSensorReading averageSensorValueByDeviceIdSensorIdAndDateRange(String deviceId, String sensorId, Date from, Date to) {
         verifyParameters(deviceId, from, to, sensorId);
 
@@ -69,7 +77,7 @@ public class AbstractIOTDeviceService<T> implements IOTDeviceService {
         return extractResult(mappedResults, deviceId, sensorId, ReadingType.AVERAGE);
     }
 
-    @Override
+//    @Override
     public SingleSensorReading minSensorValueByDeviceIdSensorIdAndDateRange(String deviceId, String sensorId, Date from, Date to) {
         verifyParameters(deviceId, from, to, sensorId);
 
@@ -93,7 +101,7 @@ public class AbstractIOTDeviceService<T> implements IOTDeviceService {
         return extractResult(mappedResults, deviceId, sensorId, ReadingType.MIN);
     }
 
-    @Override
+//    @Override
     public SingleSensorReading maxSensorValueByDeviceIdSensorIdAndDateRange(String deviceId, String sensorId, Date from, Date to) {
         verifyParameters(deviceId, from, to, sensorId);
 
@@ -120,7 +128,7 @@ public class AbstractIOTDeviceService<T> implements IOTDeviceService {
     /**
      * extracted from https://www.compose.com/articles/mongo-metrics-finding-a-happy-median/
      */
-    @Override
+//    @Override
     public SingleSensorReading medianSensorValueByDeviceIdSensorIdAndDateRange(String deviceId, String sensorId, Date from, Date to) {
         verifyParameters(deviceId, from, to, sensorId);
 
@@ -162,7 +170,7 @@ public class AbstractIOTDeviceService<T> implements IOTDeviceService {
         return extractResult(mappedResults, deviceId, sensorId, ReadingType.MEDIAN);
     }
 
-    @Override
+//    @Override
     public List<SingleSensorReading> averageReadings4DeviceIdSensorIdsAndDateRange(String deviceId, Date from, Date to, String... sensorsId) {
         verifyParameters(deviceId, from, to, sensorsId);
 
@@ -174,7 +182,7 @@ public class AbstractIOTDeviceService<T> implements IOTDeviceService {
         return results;
     }
 
-    @Override
+//    @Override
     public List<SingleSensorReading> maxReadings4DeviceIdSensorIdsAndDateRange(String deviceId, Date from, Date to, String... sensorsId) {
         verifyParameters(deviceId, from, to, sensorsId);
 
@@ -186,7 +194,7 @@ public class AbstractIOTDeviceService<T> implements IOTDeviceService {
         return results;
     }
 
-    @Override
+//    @Override
     public List<SingleSensorReading> minReadings4DeviceIdSensorIdsAndDateRange(String deviceId, Date from, Date to, String... sensorsId) {
         verifyParameters(deviceId, from, to, sensorsId);
 
@@ -198,7 +206,7 @@ public class AbstractIOTDeviceService<T> implements IOTDeviceService {
         return results;
     }
 
-    @Override
+//    @Override
     public List<SingleSensorReading> medianReadings4DeviceIdSensorIdsAndDateRange(String deviceId, Date from, Date to, String... sensorsId) {
         verifyParameters(deviceId, from, to, sensorsId);
 

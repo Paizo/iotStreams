@@ -6,6 +6,7 @@ import com.github.paizo.monitorapi.repository.SmartCouchRepository;
 import com.github.paizo.monitorapi.repository.SmartWatchRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * Test class used during development only to generate data
+ * Test class used during development only to generate sample data
  */
+@Ignore
 @Slf4j
 @SpringBootTest(classes = MonitorAPIApplication.class)
 @RunWith(SpringRunner.class)

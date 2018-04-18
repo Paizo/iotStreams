@@ -5,6 +5,6 @@ import com.github.paizo.monitorapi.service.RefrigeratorService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RefrigeratorServiceImpl extends AbstractIOTDeviceService<Refrigerator> implements RefrigeratorService {
+public class RefrigeratorServiceImpl extends IOTDeviceServiceImpl<Refrigerator> implements RefrigeratorService {
 
 }

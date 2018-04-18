@@ -9,9 +9,6 @@ management:
 spring:
   application:
     name: MonitorAPI
-#  data:
-#    rest:
-#      base-path: /api
 
 #====mongodb====
   data:
