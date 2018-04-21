@@ -9,6 +9,9 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Provide readings endpoint specific to 'refrigerator' devices
+ */
 @RestController
 @RequestMapping(value = "/refrigerator", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 @Api

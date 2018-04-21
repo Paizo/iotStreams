@@ -20,7 +20,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @Slf4j
 @SpringBootTest(classes = MonitorAPIApplication.class)
 @RunWith(SpringRunner.class)
-public class TestX {
+public class DevUtils {
 
     @Autowired
     private RefrigeratorRepository refrigeratorRepository;

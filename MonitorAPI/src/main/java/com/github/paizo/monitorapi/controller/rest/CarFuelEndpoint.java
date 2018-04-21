@@ -9,6 +9,9 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Provide readings endpoint specific to 'carfuel' devices
+ */
 @RestController
 @RequestMapping(value = "/carfuel", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 @Api

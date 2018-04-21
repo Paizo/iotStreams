@@ -9,6 +9,9 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Provide readings endpoint specific to 'smartcouch' devices
+ */
 @RestController
 @RequestMapping(value = "/smartcouch", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 @Api

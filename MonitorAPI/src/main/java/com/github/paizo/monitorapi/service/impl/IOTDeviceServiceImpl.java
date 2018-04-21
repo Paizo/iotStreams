@@ -28,6 +28,13 @@ import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
 import static org.springframework.data.mongodb.core.aggregation.ArithmeticOperators.Ceil.ceilValueOf;
 import static org.springframework.data.mongodb.core.aggregation.ArithmeticOperators.Floor.floorValueOf;
 
+/**
+ * Generic service that can apply the given aggregation queries to the specific collection
+ * by extending it with the appropriate model class.
+ * The aggregation is fired to the correct collection thanks to the use of mongoTemplate.getCollectionName(genericType)
+ * on the resolved generic type
+ * @param <T> A bean mapped in a mongoRepository
+ */
 @Service
 public class IOTDeviceServiceImpl<T> implements IOTDeviceService {
 

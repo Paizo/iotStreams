@@ -1,0 +1,20 @@
+#============================================
+#======docker container
+#============================================
+
+spring:
+  application:
+    name: MonitorAPI
+
+#====mongodb====
+  data:
+    mongodb:
+      host: ${DATABASE_HOST}
+      port: ${DATABASE_PORT}
+      database: ${DATABASE_NAME}
+
+server:
+  port: 8080
+
+management:
+  port: 9003

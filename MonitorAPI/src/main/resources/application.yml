@@ -15,18 +15,3 @@ spring:
       host: localhost
       port: 27017
       database: iot
-
-#============================================
-#======docker container
-#============================================
-
-spring:
-  application:
-    name: MonitorAPI
-
-#====mongodb====
-  data:
-    mongodb:
-      host: ${DATABASE_HOST}
-      port: ${DATABASE_PORT}
-      database: ${DATABASE_NAME}

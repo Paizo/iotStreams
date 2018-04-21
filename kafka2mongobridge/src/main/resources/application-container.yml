@@ -1,21 +1,26 @@
-management:
-  port: 9002
+#============================================
+#======docker container
+#============================================
 
 spring:
+  profiles: container
   application:
     name: Kafka2MongoBridge
 
 #====mongodb====
   data:
     mongodb:
-      host: localhost
-      port: 27017
-      database: iot
+      host: ${DATABASE_HOST}
+      port: ${DATABASE_PORT}
+      database: ${DATABASE_NAME}
 
 #====Kafka=====
   kafka:
     consumer:
       auto-offset-reset: earliest
+
+management:
+  port: 9002
 
 #define in which topics the raw data should be read for each iot device
 kafka:

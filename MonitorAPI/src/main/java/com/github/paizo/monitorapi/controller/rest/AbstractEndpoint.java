@@ -16,6 +16,20 @@ import java.util.List;
 
 import static java.lang.String.format;
 
+/**
+ * Abstract endpoint that implement all the operations per device type, namely:
+ * avg,min,max,median requesting a deviceId, sensorId and date range
+ * Multiple readings are available by providing a list of sensors Id (comma separated) to:
+ * avgs, mins, maxs, medians
+ *
+ * Extend this class and @autowire the typed service according to the mongo collection needed,
+ * ie:
+ *     @Autowired
+ * public void setIotService(IOTDeviceServiceImpl<Refrigerator> service) {
+ *    this.iotService = service;
+ * }
+ *
+ */
 @Api
 @Slf4j
 public abstract class AbstractEndpoint {

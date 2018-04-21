@@ -12,6 +12,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.ArrayList;
 
+/**
+ * Configure Rest API documentation via swagger
+ */
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
